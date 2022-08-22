@@ -1,0 +1,22 @@
+router1:
+ name: "CSR-R02"
+ domainname: "rotellaengineering.net"
+ loopback1: "172.17.1.1"
+ loopback2: "172.18.1.1"
+ interface1:
+  ip: "192.168.4.201"
+ interface2:
+  name: "GigabitEthernet2"
+  ip: "10.10.2.2"
+ interface3:
+  name: "GigabitEthernet3"
+  ip: "10.10.3.3"
+ bgp:
+  asn: "65200"
+router2:
+ name: "CSR-R01"
+ interface1:
+  name: "GigabitEthernet0/1"
+  ip: "192.168.4.200"
+ bgp:
+  asn: "65201"

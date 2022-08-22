@@ -1,0 +1,26 @@
+global:
+ dns:
+  ns1: "10.100.1.1"
+  ns2: "10.100.2.2"
+ dc: "DC1"
+ logging:
+  log1: "10.200.1.1"
+  log2: "10.200.2.2"
+router1:
+ name: "EDGE-R01"
+ loopback1: "10.1.1.1"
+ loopback2: "172.16.1.1"
+ interface1:
+  name: "GigabitEthernet0/1"
+  ip: "192.168.1.1"
+ bgp:
+  asn: "65200"
+router2:
+ name: "EDGE-R02"
+ loopback1: "10.2.2.2"
+ loopback2: "172.16.2.2"
+ interface1:
+  name: "GigabitEthernet0/1"
+  ip: "192.168.1.2"
+ bgp:
+  asn: "65201"
