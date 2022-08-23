@@ -5,17 +5,23 @@ from time import strftime
 
 
 def generate_config(configVars, j2_template, filename="config", printconfig=False):
+    # Get time for output file
     timestring = strftime("%Y%m%d-%H%M%S")
     try:
         with open(configVars) as envvars:
+            # Load environment variables from YAML
             configData = safe_load(envvars)
+            # Create jinja2 environment
             env = Environment(loader = FileSystemLoader('./templates'))
             try:
                 template = env.get_template(j2_template)
+                # Render configuration file
                 config = template.render(configData)
                 with open(filename + timestring + ".txt", 'w') as f:
+                    # Write config to file
                     f.write(config)
                 if printconfig is True:
+                    # Print config to terminal if verbose
                     print(config)
             except TemplateNotFound:
                 print("Template file not found.")
@@ -24,6 +30,13 @@ def generate_config(configVars, j2_template, filename="config", printconfig=Fals
 
 
 def main():
+
+    """ Arguments:
+        1. Feed variables as YAML
+        2. Template file
+        3. (Optional) Output file name
+        4. (Optional) Verbose switch (true, yes, v, or verbose)
+    """
 
     if len(argv) < 3:
         raise Exception('Please specify Variables (YML), Template File, Output File (optional), Verbose (optional)')
